@@ -1,0 +1,48 @@
+# Build directory
+/build/
+
+# Generated CMake files
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Configuration files
+CMakeConfigureLog.yaml
+
+# Dependency files
+*.d
+
+# Generated binaries
+/inference_engine
+*.elf
+*.map
+
+# Temporary files
+CMakeTmp/
+CMakeScratch/
+*.log
+*.tmp
+
+# CMake cache (in subfolders)
+**/CMakeFiles/
+**/CMakeCache.txt
+**/Makefile
+**/cmake_install.cmake
+
+# Python files
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+
+# VSCode
+.vscode/
+
+# CLion / JetBrains
+.idea/
+cmake-build-*/
