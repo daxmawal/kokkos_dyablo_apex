@@ -1,16 +1,27 @@
 # tests/CMakeLists.txt
 
-add_executable(test_occupancy test_occupancy.cpp)
+add_executable(standalone_foreach_cell_chunk standalone_foreach_cell_chunk.cpp)
+target_include_directories(standalone_foreach_cell_chunk PRIVATE
+    ${PROJECT_SOURCE_DIR}/kokkos/include
+    ${PROJECT_SOURCE_DIR}/apex/src
+)
+target_link_libraries(standalone_foreach_cell_chunk
+    PRIVATE kokkoscore apex
+)
+target_compile_options(standalone_foreach_cell_chunk PRIVATE -Wall -Wextra -Wpedantic)
+add_test(NAME OccupancyTest COMMAND standalone_foreach_cell_chunk)
 
-target_include_directories(test_occupancy PRIVATE
+add_executable(standalone_foreach_cell_policy standalone_foreach_cell_policy.cpp)
+
+target_include_directories(standalone_foreach_cell_policy PRIVATE
     ${PROJECT_SOURCE_DIR}/kokkos/include
     ${PROJECT_SOURCE_DIR}/apex/src
 )
 
-target_link_libraries(test_occupancy
+target_link_libraries(standalone_foreach_cell_policy
     PRIVATE kokkoscore apex
 )
 
-target_compile_options(test_occupancy PRIVATE -Wall -Wextra -Wpedantic)
+target_compile_options(standalone_foreach_cell_policy PRIVATE -Wall -Wextra -Wpedantic)
 
-add_test(NAME OccupancyTest COMMAND test_occupancy)
+add_test(NAME ForeachCellTuningTest COMMAND standalone_foreach_cell_policy)
